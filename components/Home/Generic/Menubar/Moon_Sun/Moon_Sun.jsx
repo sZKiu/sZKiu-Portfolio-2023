@@ -9,10 +9,10 @@ const Moon_Sun = ({ left }) => {
   if (!colorMode_SK) {
     localStorage.setItem("lightmode-sk", "false");
     setIsLight("false");
-  } else if (colorMode_SK === "true") {
+  }/*  else if (colorMode_SK === "true") {
     localStorage.setItem("lightmode-sk", "true");
     setIsLight("true");
-  }
+  } */
 
   const handlerChangeDarkMode = () => {
     if (isLight === "false") {
