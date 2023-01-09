@@ -5,12 +5,12 @@ import { BsFillSunFill, BsFillMoonFill } from "react-icons/bs";
 
 const Moon_Sun = ({ left }) => {
   const { isLight, setIsLight } = useContext(Context);
-  const [colorMode_SK, setColorMode_SK] = useState(null);
+  const [colorMode_SK, setColorMode_SK] = useState("false");
   useEffect(() => {
     setColorMode_SK(localStorage.getItem("lightmode-sk"));
   }, []);
 
-  if (colorMode_SK !== null && !colorMode_SK) {
+  if (colorMode_SK !== "false" && !colorMode_SK) {
     localStorage.setItem("lightmode-sk", "false");
     setIsLight("false");
   } else if (colorMode_SK === "true") {
