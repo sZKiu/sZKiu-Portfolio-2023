@@ -1,4 +1,4 @@
-"use client";
+
 import React, { useContext, useEffect, useState } from "react";
 import Context from "../../../../../context/ThemeContext";
 import { BsFillSunFill, BsFillMoonFill } from "react-icons/bs";
