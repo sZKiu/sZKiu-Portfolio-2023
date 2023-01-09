@@ -14,7 +14,7 @@ const Header = () => {
         id="header"
         data-show={false}
         className={`${isLight === "true" ? "bg-slate-200" : "bg-zinc-800"} ${
-          mql.matches
+          mql?.matches
             ? "w-3/12"
             : "fixed -translate-x-[99rem] opacity-0 top-0 left-0 right-0 bottom-0 w-4/6"
         } flex justify-center pt-12 md:pt-16 z-50 transition-all duration-500`}
@@ -36,7 +36,7 @@ const Header = () => {
         </div>
       </header>
 
-      {mql.matches ? null : (
+      {mql?.matches ? null : (
         <div className="fixed top-0 left-0 right-0 bottom-0 bg-black/[0.7] transition-opacity duration-500 opacity-0 -translate-x-[99rem] z-40" />
       )}
     </>
