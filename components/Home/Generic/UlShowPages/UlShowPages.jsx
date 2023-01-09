@@ -1,5 +1,5 @@
 "use client";
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import Context from "../../../../context/StaticContext";
 import ThemeContext from "../../../../context/ThemeContext";
 import {
@@ -13,7 +13,11 @@ import { FaToolbox } from "react-icons/fa";
 const UlShowPages = () => {
   const { isLight } = useContext(ThemeContext);
   const { active, setActive } = useContext(Context);
-  const mql = matchMedia("(min-width: 1280px)");
+  const [mql, setMql] = useState(false);
+  useEffect(() => {
+    matchMedia("(min-width: 1280px)").matches ? setMql(true) : null;
+  }, []);
+
   const handlerChangeActive = (e) => {
     const header = document.getElementById("header");
     const blackMask = header.nextElementSibling;
@@ -41,7 +45,7 @@ const UlShowPages = () => {
       } flex flex-col gap-6 md:gap-10 font-['Roboto']`}
     >
       <li
-        onClick={mql.matches ? setPage : handlerChangeActive}
+        onClick={mql ? setPage : handlerChangeActive}
         data-page="Principal"
         className="flex items-center justify-start gap-2 pb-1 border-b border-zinc-500 transition duration-300 hover:text-amber-400 cursor-pointer text-lg md:text-2xl font-medium"
       >
@@ -50,7 +54,7 @@ const UlShowPages = () => {
       </li>
 
       <li
-        onClick={mql.matches ? setPage : handlerChangeActive}
+        onClick={mql ? setPage : handlerChangeActive}
         data-page="About"
         className="flex items-center justify-start gap-2 pb-1 border-b border-zinc-500 transition duration-300 hover:text-amber-400 cursor-pointer text-lg md:text-2xl font-medium"
       >
@@ -59,7 +63,7 @@ const UlShowPages = () => {
       </li>
 
       <li
-        onClick={mql.matches ? setPage : handlerChangeActive}
+        onClick={mql ? setPage : handlerChangeActive}
         data-page="Services"
         className="flex items-center justify-start gap-2 pb-1 border-b border-zinc-500 transition duration-300 hover:text-amber-400 cursor-pointer text-lg md:text-2xl font-medium"
       >
@@ -68,7 +72,7 @@ const UlShowPages = () => {
       </li>
 
       <li
-        onClick={mql.matches ? setPage : handlerChangeActive}
+        onClick={mql ? setPage : handlerChangeActive}
         data-page="Portfolio"
         className="flex items-center justify-start gap-2 pb-1 border-b border-zinc-500 transition duration-300 hover:text-amber-400 cursor-pointer text-lg md:text-2xl font-medium"
       >
@@ -77,7 +81,7 @@ const UlShowPages = () => {
       </li>
 
       <li
-        onClick={mql.matches ? setPage : handlerChangeActive}
+        onClick={mql ? setPage : handlerChangeActive}
         data-page="Contact"
         className="flex items-center justify-start gap-2 pb-1 border-b border-zinc-500 transition duration-300 hover:text-amber-400 cursor-pointer text-lg md:text-2xl font-medium"
       >

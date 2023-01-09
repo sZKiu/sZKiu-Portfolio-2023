@@ -13,7 +13,10 @@ import Contact from "../../Contact/Contact";
 
 const ShowPage = () => {
   const [pageActive, setPageActive] = useState("");
-  const mql = matchMedia("(min-width: 1280px)");
+  const [mql, setMql] = useState(false);
+  useEffect(() => {
+    matchMedia("(min-width: 1280px)").matches ? setMql(true) : null;
+  }, []);
   const { active } = useContext(Context);
   const { isLight } = useContext(ThemeContext);
 
@@ -23,9 +26,9 @@ const ShowPage = () => {
 
   return (
     <>
-      {mql.matches ? null : <Menubar />}
+      {mql ? null : <Menubar />}
 
-      {mql.matches ? (
+      {mql ? (
         <div
           className={`${
             isLight === "true" ? "bg-slate-100 text-zinc-900" : "bg-zinc-900"
@@ -57,7 +60,7 @@ const ShowPage = () => {
             className={`${
               isLight === "true" ? "bg-slate-100 text-zinc-900" : "bg-zinc-900"
             } ${
-              mql.matches ? "w-full" : "min-h-[84vh] md:min-h-[87vh]"
+              mql ? "w-full" : "min-h-[84vh] md:min-h-[87vh]"
             } font-home overflow-x-hidden pb-4`}
           >
             <Principal show={pageActive === "Home"} />

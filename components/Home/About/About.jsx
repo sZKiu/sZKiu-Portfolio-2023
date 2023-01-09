@@ -188,7 +188,7 @@
 // };
 
 // export default About;
-
+'use client'
 import React, { useContext } from "react";
 import { BsFillPatchCheckFill } from "react-icons/bs";
 import Context from "../../../context/ThemeContext";
@@ -197,7 +197,10 @@ import EnglishCurriculum from "../../../assets/curriculum/Curriculum.png";
 
 const About = ({ show }) => {
   const { isLight } = useContext(Context);
-  const mql = matchMedia("(min-width: 1280px)");
+  const [mql, setMql] = useState(false);
+  useEffect(() => {
+    matchMedia("(min-width: 1280px)").matches ? setMql(true) : null;
+  }, []);
 
   return (
     <section
@@ -280,7 +283,7 @@ const About = ({ show }) => {
               My Skills
             </h4>
 
-            {mql.matches ? (
+            {mql ? (
               <div className="flex justify-center gap-6" >
                 <div
                   className={`${

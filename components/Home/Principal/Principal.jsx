@@ -35,20 +35,24 @@
 // };
 
 // export default Principal;
-
-import React, { useContext } from "react";
+"use client";
+import React, { useContext, useEffect, useState } from "react";
 import ButtonPrincipal from "./ButtonPrincipal/ButtonPrincipal";
 import Context from "../../../context/ThemeContext";
 import AugustoImage from "../../../assets/augusto-images/Picture-about-me-face-green-shirt-PhotoRoom-PhotoRoom.png";
 
 const Principal = ({ show }) => {
   const { isLight } = useContext(Context);
-  const mq_image = matchMedia("(min-width: 768px)");
-  const mql_large = matchMedia("(min-width: 1280px");
+  const [mq_image, setmq_image] = useState(false);
+  const [mql_large, setMql_large] = useState(false);
+  useEffect(() => {
+    matchMedia("(min-width: 768px)").matches ? setmq_image(true) : null;
+    matchMedia("(min-width: 1280px)").matches ? setMql_large(true) : null;
+  }, []);
 
   return (
     <>
-      {mql_large.matches ? (
+      {mql_large ? (
         <section
           className={`${show ? "px-5 pt-8" : "translate-x-[26rem]"} ${
             isLight === "true" ? "text-zinc-900" : "text-slate-50"
@@ -97,7 +101,7 @@ const Principal = ({ show }) => {
         >
           {show ? (
             <>
-              {mq_image.matches ? (
+              {mq_image ? (
                 <div className="my-o mx-auto relative p-8">
                   <div className="absolute top-0 right-0 border-r-8 border-t-8 border-amber-400 w-10 h-10" />
                   <img

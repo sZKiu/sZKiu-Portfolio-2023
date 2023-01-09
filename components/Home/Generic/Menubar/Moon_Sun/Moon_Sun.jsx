@@ -1,26 +1,32 @@
 "use client";
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import Context from "../../../../../context/ThemeContext";
 import { BsFillSunFill, BsFillMoonFill } from "react-icons/bs";
 
 const Moon_Sun = ({ left }) => {
   const { isLight, setIsLight } = useContext(Context);
-  const colorMode_SK = localStorage.getItem("lightmode-sk");
-  if (!colorMode_SK) {
+  const [colorMode_SK, setColorMode_SK] = useState(null);
+  useEffect(() => {
+    setColorMode_SK(localStorage.getItem("lightmode-sk"));
+  }, []);
+
+  if (colorMode_SK !== null && !colorMode_SK) {
     localStorage.setItem("lightmode-sk", "false");
     setIsLight("false");
-  }/*  else if (colorMode_SK === "true") {
+  } else if (colorMode_SK === "true") {
     localStorage.setItem("lightmode-sk", "true");
     setIsLight("true");
-  } */
+  }
 
   const handlerChangeDarkMode = () => {
-    if (isLight === "false") {
-      localStorage.setItem("lightmode-sk", "true");
-      setIsLight("true");
-    } else {
-      localStorage.setItem("lightmode-sk", "false");
-      setIsLight("false");
+    if (colorMode_SK !== null) {
+      if (isLight === "false") {
+        localStorage.setItem("lightmode-sk", "true");
+        setIsLight("true");
+      } else {
+        localStorage.setItem("lightmode-sk", "false");
+        setIsLight("false");
+      }
     }
   };
 
