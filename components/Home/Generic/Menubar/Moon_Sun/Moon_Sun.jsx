@@ -19,7 +19,7 @@ const Moon_Sun = ({ left }) => {
   }
 
   const handlerChangeDarkMode = () => {
-    if (colorMode_SK !== null) {
+    if (colorMode_SK !== "false") {
       if (isLight === "false") {
         localStorage.setItem("lightmode-sk", "true");
         setIsLight("true");
