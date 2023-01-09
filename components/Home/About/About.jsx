@@ -189,7 +189,7 @@
 
 // export default About;
 'use client'
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { BsFillPatchCheckFill } from "react-icons/bs";
 import Context from "../../../context/ThemeContext";
 import EspañolCurriculum from "../../../assets/curriculum/EspañolCurriculum.png";
